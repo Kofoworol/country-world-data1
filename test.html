@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Horizontal Bar Chart</title>
+    <script>
+      console.log("hu");
+    </script>
+  </head>
+  <body>
+    <div style="width: 60%; margin: auto">
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Chart.js Data Labels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("hello world");
+
+        let LanguageData = [
+          { name: "English", rate: 91 },
+          { name: "French", rate: 45 },
+          { name: "Arabic", rate: 25 },
+          { name: "Spanish", rate: 24 },
+          { name: "Portuguese", rate: 9 },
+          { name: "Russian", rate: 9 },
+          { name: "Dutch", rate: 8 },
+          { name: "German", rate: 7 },
+          { name: "Chinese", rate: 5 },
+          { name: "Serbian", rate: 4 },
+        ];
+
+        // Sort the data by rate in descending order
+        LanguageData.sort((a, b) => b.rate - a.rate);
+
+        // Extract the names and rates
+        let labels = LanguageData.map((item) => item.name);
+        let data = LanguageData.map((item) => item.rate);
+        console.log(data);
+
+        // Get the canvas context
+        let ctx = document.getElementById("myChart");
+        console.log(ctx); // Debugging step to ensure the canvas element is accessed correctly
+
+        // Create the chart
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "Proficiency Rate",
+                data: data,
+                backgroundColor: "rgba(75, 192, 192, 0.6)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            indexAxis: "y", // This makes the chart horizontal
+            scales: {
+              x: {
+                display: false, // Hide the x-axis
+              },
+              y: {
+                grid: {
+                  display: false, // Remove horizontal grid lines
+                },
+              },
+            },
+            plugins: {
+              legend: {
+                display: false, // Hide the legend
+              },
+              datalabels: {
+                anchor: "end",
+                align: "end", // Align labels to the end
+                formatter: (value) => value, // Display the actual rate value
+                color: "black",
+                font: {
+                  weight: "bold",
+                },
+              },
+            },
+            layout: {
+              padding: {
+                right: 100, // Adjust this value as needed to ensure labels are at the extreme right
+              },
+            },
+          },
+          plugins: [ChartDataLabels], // Register the plugin
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Countries Data</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="header">
+      <h1>World Countries Data</h1>
+      <p>Currently we have 250 Countries</p>
+    </div>
+    <div id="inputBtn">
+      <input
+        type="button"
+        value="POPULATION"
+        name="population"
+        id="population"
+      />
+      <input type="button" name="languages" id="languages" value="LANGUAGES" />
+    </div>
+    <p id="p1"></p>
+    <div id="wrap1">
+      <div id="container">
+        <div id="countryName">
+          <p class="country">World</p>
+          <p class="country">China</p>
+          <p class="country">India</p>
+          <p class="country">USA</p>
+          <p class="country">Indonesia</p>
+          <p class="country">Brazil</p>
+          <p class="country">Pakistan</p>
+          <p class="country">Nigeria</p>
+          <p class="country">Bagladesh</p>
+          <p class="country">Russia</p>
+          <p class="country">Japan</p>
+        </div>
+        <div id="countryChart">
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+        </div>
+        <div id="countryRate">
+          <p class="rate">80</p>
+          <p class="rate">70</p>
+          <p class="rate">60</p>
+          <p class="rate">55</p>
+          <p class="rate">50</p>
+          <p class="rate">45</p>
+          <p class="rate">35</p>
+          <p class="rate">30</p>
+          <p class="rate">28</p>
+          <p class="rate">18</p>
+          <p class="rate">12</p>
+        </div>
+      </div>
+    </div>
+    <div id="wrap2">
+      <div id="container">
+        <div id="LanguageContainer">
+          <p class="language">English</p>
+          <p class="language">French</p>
+          <p class="language">Arabic</p>
+          <p class="language">Spanese</p>
+          <p class="language">Portuguese</p>
+          <p class="language">Russian</p>
+          <p class="language">Dutch</p>
+          <p class="language">German</p>
+          <p class="language">Chinese</p>
+          <p class="language">Serbian</p>
+        </div>
+        <div id="countryChart">
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+          <div class="chart"></div>
+        </div>
+        <div id="countryRate">
+          <p class="rate">95</p>
+          <p class="rate">45</p>
+          <p class="rate">25</p>
+          <p class="rate">24</p>
+          <p class="rate">9</p>
+          <p class="rate">9</p>
+          <p class="rate">8</p>
+          <p class="rate">7</p>
+          <p class="rate">5</p>
+          <p class="rate">4</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const charts = document.querySelectorAll(".chart");
+      const rates = document.querySelectorAll(".rate");
+
+      const maxRate = 100; // Define the maximum rate
+      const maxWidth = 1000; // Define the maximum width in pixels
+
+      rates.forEach((rate, index) => {
+        const value = parseInt(rate.textContent, 10);
+        const width = (value / maxRate) * maxWidth;
+        charts[index].style.width = width + "px";
+      });
+
+      const wrap1 = document.getElementById("wrap1");
+      const population = document.getElementById("population");
+      const wrap2 = document.getElementById("wrap2");
+      const languages = document.getElementById("languages");
+      const p1 = document.getElementById("p1");
+
+      wrap1.style.display = "flex";
+      p1.innerHTML = "Top 10 most popular countries in the world";
+
+      languages.addEventListener("click", () => {
+        p1.innerHTML = "Top 10 most popular languages in the world";
+        wrap2.style.display = "flex";
+        wrap1.style.display = "none";
+      });
+      population.addEventListener("click", () => {
+        p1.innerHTML = "Top 10 most popular countries in the world";
+        wrap1.style.display = "flex";
+        wrap2.style.display = "none";
+      });
+    </script>
+    l
+  </body>
+</html>
